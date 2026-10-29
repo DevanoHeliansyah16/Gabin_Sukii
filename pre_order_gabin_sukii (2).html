@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Order Gabin Sukii</title>
+    <!-- Tailwind CSS for rapid styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for playful typography matching the poster -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'fredoka': ['Fredoka', 'sans-serif'],
+                        'quicksand': ['Quicksand', 'sans-serif'],
+                    },
+                    colors: {
+                        'sukii-green': '#6da23d',
+                        'sukii-red': '#e2434b',
+                        'goguma': '#b998d3',
+                        'strawberry': '#f3a6b8',
+                        'oreo': '#d1d5db',
+                        'cokelat': '#8b5a2b',
+                        'denim': '#4b6cb7'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            /* Grass texture simulation using CSS pattern */
+            background-color: #6da23d;
+            background-image: radial-gradient(#5a8a32 15%, transparent 16%), radial-gradient(#5a8a32 15%, transparent 16%);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            color: #333;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Picnic gingham pattern (Red and White Checkered) */
+        .picnic-pattern {
+            background-color: white;
+            background-image: 
+                linear-gradient(45deg, rgba(226, 67, 75, 0.2) 25%, transparent 25%, transparent 75%, rgba(226, 67, 75, 0.2) 75%, rgba(226, 67, 75, 0.2)), 
+                linear-gradient(45deg, rgba(226, 67, 75, 0.2) 25%, transparent 25%, transparent 75%, rgba(226, 67, 75, 0.2) 75%, rgba(226, 67, 75, 0.2));
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+
+        .denim-texture {
+            background-color: #4b6cb7;
+            background-image: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 2px,
+                rgba(255,255,255,0.1) 2px,
+                rgba(255,255,255,0.1) 4px
+            );
+            border: 2px dashed #ffd700;
+        }
+
+        /* Playful Card Style */
+        .sukii-card {
+            background: white;
+            border: 3px solid #2d3748;
+            border-radius: 1rem;
+            box-shadow: 4px 4px 0px #2d3748;
+            transition: transform 0.1s ease-in-out;
+        }
+        
+        .sukii-card:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #2d3748;
+        }
+
+        .sukii-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 3px solid #2d3748;
+            border-radius: 0.75rem;
+            outline: none;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+        
+        .sukii-input:focus {
+            box-shadow: 4px 4px 0px #e2434b;
+            transform: translateY(-2px);
+        }
+
+        /* Floating Animation for Stars */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Modal styling */
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(2px);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen pb-24">
+
+    <!-- Main Container (Responsive for Mobile & Desktop) -->
+    <div class="max-w-md md:max-w-2xl mx-auto relative pt-4 px-4">
+        
+        <!-- Decoration Stars -->
+        <div class="absolute top-10 left-2 text-yellow-300 text-3xl animate-float"><i class="fa-solid fa-star"></i></div>
+        <div class="absolute top-32 right-2 text-blue-300 text-2xl animate-float" style="animation-delay: 1s;"><i class="fa-solid fa-star"></i></div>
+        <div class="absolute top-96 left-4 text-pink-300 text-2xl animate-float" style="animation-delay: 0.5s;"><i class="fa-solid fa-star"></i></div>
+
+        <!-- Header Section -->
+        <header class="sukii-card picnic-pattern p-4 mb-6 text-center relative overflow-hidden">
+            <div class="bg-white/90 p-4 rounded-xl border-2 border-gray-800">
+                <h1 class="font-fredoka text-4xl font-bold text-gray-800 mb-1 drop-shadow-md">GABIN SUKII</h1>
+                <p class="font-bold text-sukii-red text-lg">OPEN PRE-ORDER</p>
+                <div class="inline-block mt-2 denim-texture text-white font-fredoka px-4 py-1 rounded-full text-sm transform -rotate-2">
+                    All Varian 10k!
+                </div>
+            </div>
+        </header>
+
+        <!-- Promo Banner -->
+        <div class="sukii-card bg-yellow-100 p-4 mb-6 border-yellow-500 relative">
+            <div class="absolute -top-3 -right-3 bg-sukii-red text-white w-10 h-10 rounded-full flex items-center justify-center font-bold border-2 border-gray-800 rotate-12">
+                <i class="fa-solid fa-gift"></i>
+            </div>
+            <h2 class="font-fredoka text-xl text-yellow-800 mb-2">🎁 Promo Spesial!</h2>
+            <p class="text-sm font-bold text-gray-700">Dapatkan <span class="text-sukii-red font-extrabold">FREE TAS SPUNBOND</span> dan <span class="text-sukii-green font-extrabold">BISA COD SEPUTARAN TEMBALANG</span> untuk setiap pembelian <span class="font-extrabold text-lg">≥ 3 pcs</span> varian apa saja!</p>
+            <p class="text-xs text-gray-500 mt-2 font-bold"><i class="fa-regular fa-calendar"></i> PO: 4-10 Nov | Ready: 13 Nov (FISIP UNDIP)</p>
+        </div>
+
+        <!-- Product Menu -->
+        <div class="text-center mb-6 relative">
+            <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                <div class="w-full border-t-4 border-dashed border-white"></div>
+            </div>
+            <div class="relative flex justify-center">
+                <span class="bg-white sukii-card px-6 py-2">
+                    <h2 class="font-fredoka text-2xl text-sukii-green drop-shadow-sm font-bold">Pilih Pasukan Gabinmu!</h2>
+                </span>
+            </div>
+        </div>
+        
+        <!-- Product Grid (1 col on mobile, 2 cols on desktop) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8" id="product-list">
+            <!-- Products will be injected here by JS -->
+        </div>
+
+        <!-- Customer Form -->
+        <div class="sukii-card bg-white p-5 mb-6">
+            <h2 class="font-fredoka text-xl text-gray-800 mb-4 border-b-2 border-dashed border-gray-300 pb-2">📋 Data Pemesan</h2>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Nama Panggilan</label>
+                    <input type="text" id="cust-name" class="sukii-input" placeholder="Misal: Keonho" required>
+                </div>
+                
+                <!-- Metode Pengiriman / Pengambilan -->
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Metode Pengiriman / Pengambilan</label>
+                    <div class="relative">
+                        <select id="cust-fulfillment-type" class="sukii-input appearance-none bg-white pr-10" onchange="handleFulfillmentChange()">
+                            <option value="pickup">Ambil di Titik Jemput (13 Nov)</option>
+                            <option value="cod">COD Tembalang (Dibawah 3 pcs +Ongkir Rp 3.000)</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-800">
+                            <i class="fa-solid fa-chevron-down text-lg"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pickup Point container (Opsional / Default) -->
+                <div id="pickup-container">
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Pilih Titik Jemput</label>
+                    <div class="relative">
+                        <select id="cust-pickup" class="sukii-input appearance-none bg-white pr-10">
+                            <option value="Parkiran FISIP">Parkiran FISIP</option>
+                            <option value="Lobby Utama FISIP">Lobby Utama FISIP</option>
+                            <option value="Lapangan Basket FISIP">Lapangan Basket FISIP</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-800">
+                            <i class="fa-solid fa-chevron-down text-lg"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COD Address Input -->
+                <div id="cod-address-container" class="hidden transition-all duration-300 bg-green-50 p-3 rounded-xl border-2 border-green-600">
+                    <label class="block text-sm font-bold text-green-800 mb-1"><i class="fa-solid fa-motorcycle"></i> Masukkan Alamat Lengkap COD Tembalang</label>
+                    <input type="text" id="cust-cod-address" class="sukii-input bg-white" placeholder="Contoh: Rusunawa Undip / Asrama ...">
+                    <p id="cod-info-text" class="text-xs text-green-700 mt-1 font-bold">✨ Pesan < 3 pcs kena tambahan ongkir Rp 3.000.</p>
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Catatan Tambahan (Opsional)</label>
+                    <textarea id="cust-notes" class="sukii-input h-20 resize-none" placeholder="Misal: Kak nanti aku ambil jam 2 siang ya"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center pb-8 text-white font-bold text-sm drop-shadow-md">
+            <p>Made with ❤️ by Gabin Sukii Team</p>
+        </div>
+
+    </div>
+
+    <!-- Sticky Bottom Cart -->
+    <div class="fixed bottom-0 w-full max-w-md md:max-w-2xl left-1/2 transform -translate-x-1/2 bg-white border-t-4 border-gray-800 p-4 rounded-t-3xl shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.1)] z-40 transition-transform duration-300 translate-y-full" id="sticky-cart">
+        <div class="flex justify-between items-center mb-3">
+            <div>
+                <p class="text-sm font-bold text-gray-500">Total Pesanan:</p>
+                <div class="flex items-center gap-2">
+                    <p class="font-fredoka text-2xl text-gray-800" id="total-price">Rp 0</p>
+                    <span id="promo-badge" class="hidden bg-green-100 text-green-700 border-2 border-green-700 text-xs font-bold px-2 py-1 rounded-full animate-bounce">
+                        +FREE TAS & COD! 🎉
+                    </span>
+                </div>
+            </div>
+            <div class="text-right">
+                <span class="bg-gray-200 text-gray-800 font-bold px-3 py-1 rounded-full text-sm border-2 border-gray-800" id="total-items">0 pcs</span>
+            </div>
+        </div>
+        <button onclick="checkout()" class="w-full bg-sukii-red text-white font-fredoka text-xl py-3 rounded-xl border-4 border-gray-800 shadow-[4px_4px_0px_#2d3748] active:translate-y-1 active:shadow-[0px_0px_0px_#2d3748] transition-all flex items-center justify-center gap-2">
+            <i class="fa-brands fa-whatsapp text-2xl"></i> Pesan Sekarang
+        </button>
+    </div>
+
+    <!-- Custom Message Box (Modal) -->
+    <div id="custom-modal" class="fixed inset-0 modal-overlay flex items-center justify-center z-50 hidden opacity-0 transition-opacity duration-200">
+        <div class="sukii-card bg-white p-6 m-4 max-w-sm w-full text-center transform scale-95 transition-transform duration-200" id="modal-content">
+            <div class="text-4xl mb-4" id="modal-icon">⚠️</div>
+            <h3 class="font-fredoka text-xl text-gray-800 mb-2" id="modal-title">Perhatian</h3>
+            <p class="font-bold text-gray-600 mb-6" id="modal-message">Pesan error disini.</p>
+            <button onclick="closeModal()" class="w-full bg-yellow-400 text-gray-800 font-fredoka text-lg py-2 rounded-xl border-4 border-gray-800 shadow-[4px_4px_0px_#2d3748] active:translate-y-1 active:shadow-none transition-all">
+                Oke, Mengerti!
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Data Produk berdasarkan gambar dan varian
+        const products = [
+            { 
+                id: 'goguma', 
+                name: 'Goguma', 
+                desc: 'ubi ungu asli', 
+                price: 10000, 
+                emoji: '🍠',
+                colorClass: 'bg-purple-100 border-purple-400' 
+            },
+            { 
+                id: 'oreo', 
+                name: 'Vanilla Oreo', 
+                desc: 'Klasik yang ga pernah salah', 
+                price: 10000, 
+                emoji: '🍪',
+                colorClass: 'bg-gray-100 border-gray-400'
+            },
+            { 
+                id: 'strawberry', 
+                name: 'Strawberry', 
+                desc: 'Asem manis nyegerin', 
+                price: 10000, 
+                emoji: '🍓',
+                colorClass: 'bg-pink-100 border-pink-400'
+            },
+            { 
+                id: 'coklat', 
+                name: 'Coklat', 
+                desc: 'Pecinta cokelat wajib kumpul', 
+                price: 10000, 
+                emoji: '🍫',
+                colorClass: 'bg-orange-100 border-orange-400'
+            }
+        ];
+
+        // State Cart matching exact product IDs
+        const cart = {
+            goguma: 0,
+            oreo: 0,
+            strawberry: 0,
+            coklat: 0
+        };
+
+        // Render Products to DOM
+        function renderProducts() {
+            const container = document.getElementById('product-list');
+            
+            products.forEach(product => {
+                const html = `
+                    <div class="sukii-card ${product.colorClass} p-4 flex gap-4 items-center relative overflow-hidden">
+                        <div class="flex-grow">
+                            <h3 class="font-fredoka text-xl text-gray-800 leading-tight mb-1">${product.name}</h3>
+                            <p class="text-sm font-bold text-gray-600 mb-2">${product.desc}</p>
+                            <p class="font-bold text-sukii-red text-lg">Rp 10.000</p>
+                        </div>
+                        
+                        <!-- Controls -->
+                        <div class="flex items-center gap-2 bg-white border-2 border-gray-800 rounded-lg p-1 shadow-sm">
+                            <button onclick="updateCart('${product.id}', -1)" class="w-8 h-8 rounded-md bg-gray-100 flex items-center justify-center text-gray-600 active:bg-gray-200 transition-colors">
+                                <i class="fa-solid fa-minus text-sm"></i>
+                            </button>
+                            <span id="qty-${product.id}" class="font-bold w-6 text-center text-gray-800 text-lg">0</span>
+                            <button onclick="updateCart('${product.id}', 1)" class="w-8 h-8 rounded-md bg-sukii-red flex items-center justify-center text-white active:bg-red-600 transition-colors">
+                                <i class="fa-solid fa-plus text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
+        }
+
+        // Format Currency
+        function formatRupiah(number) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(number);
+        }
+
+        // Update Cart logic
+        function updateCart(id, change) {
+            if (cart[id] + change >= 0) {
+                cart[id] += change;
+                document.getElementById(`qty-${id}`).innerText = cart[id];
+                updateSummary();
+            }
+        }
+
+        // Calculate and update the bottom sticky cart
+        function updateSummary() {
+            let totalQty = 0;
+            let totalPrice = 0;
+
+            for (const id in cart) {
+                totalQty += cart[id];
+                const product = products.find(p => p.id === id);
+                totalPrice += cart[id] * product.price;
+            }
+
+            // Cek apakah pakai COD dengan ongkir (jika < 3 pcs dan memilih metode COD)
+            const fulfillmentType = document.getElementById('cust-fulfillment-type').value;
+            let finalPrice = totalPrice;
+            if (totalQty > 0 && fulfillmentType === 'cod' && totalQty < 3) {
+                finalPrice += 3000;
+            }
+
+            document.getElementById('total-items').innerText = `${totalQty} pcs`;
+            document.getElementById('total-price').innerText = formatRupiah(finalPrice);
+
+            // Handle Sticky Cart Visibility
+            const stickyCart = document.getElementById('sticky-cart');
+            if (totalQty > 0) {
+                stickyCart.classList.remove('translate-y-full');
+            } else {
+                stickyCart.classList.add('translate-y-full');
+            }
+
+            // Handle Promo Badge & Auto Free COD if >= 3
+            const promoBadge = document.getElementById('promo-badge');
+            const codInfoText = document.getElementById('cod-info-text');
+            
+            if (totalQty >= 3) {
+                promoBadge.classList.remove('hidden');
+                if (fulfillmentType === 'cod') {
+                    codInfoText.innerText = '🎉 Yeay! Karena pesan ≥ 3 pcs, kamu BERHAK FREE ONGKIR COD Tembalang & Free Tas!';
+                }
+            } else {
+                promoBadge.classList.add('hidden');
+                if (fulfillmentType === 'cod') {
+                    codInfoText.innerText = '✨ Pesan < 3 pcs kena tambahan ongkir Rp 3.000.';
+                }
+            }
+        }
+
+        // Handle switching fulfillment type
+        function handleFulfillmentChange() {
+            const type = document.getElementById('cust-fulfillment-type').value;
+            const pickupContainer = document.getElementById('pickup-container');
+            const codContainer = document.getElementById('cod-address-container');
+            
+            let totalQty = 0;
+            for (const id in cart) {
+                totalQty += cart[id];
+            }
+
+            if (type === 'cod') {
+                pickupContainer.classList.add('hidden');
+                codContainer.classList.remove('hidden');
+                const codInfoText = document.getElementById('cod-info-text');
+                if (totalQty >= 3) {
+                    codInfoText.innerText = '🎉 Yeay! Karena pesan ≥ 3 pcs, kamu BERHAK FREE ONGKIR COD Tembalang & Free Tas!';
+                } else {
+                    codInfoText.innerText = '✨ Pesan < 3 pcs kena tambahan ongkir Rp 3.000.';
+                }
+            } else {
+                pickupContainer.classList.remove('hidden');
+                codContainer.classList.add('hidden');
+            }
+            updateSummary();
+        }
+
+        // Modal Functionality (Replacing alert/confirm)
+        function showModal(title, message, icon = '⚠️') {
+            const modal = document.getElementById('custom-modal');
+            const content = document.getElementById('modal-content');
+            
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-message').innerText = message;
+            document.getElementById('modal-icon').innerText = icon;
+
+            modal.classList.remove('hidden');
+            // Trigger reflow
+            void modal.offsetWidth;
+            modal.classList.remove('opacity-0');
+            content.classList.remove('scale-95');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('custom-modal');
+            const content = document.getElementById('modal-content');
+            
+            modal.classList.add('opacity-0');
+            content.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 200); // match duration
+        }
+
+        // Checkout & generate WhatsApp link
+        function checkout() {
+            const name = document.getElementById('cust-name').value.trim();
+            const notes = document.getElementById('cust-notes').value.trim();
+            const fulfillmentType = document.getElementById('cust-fulfillment-type').value;
+            const pickup = document.getElementById('cust-pickup').value;
+            const codAddressInput = document.getElementById('cust-cod-address');
+            
+            // Validation
+            if (!name) {
+                showModal('Waduh!', 'Nama panggilan belum diisi nih Kak.', '😅');
+                document.getElementById('cust-name').focus();
+                return;
+            }
+
+            let totalQty = 0;
+            let totalPrice = 0;
+            let orderDetails = '';
+
+            // Formatting Order Details for WA with Emojis
+            products.forEach(product => {
+                const qty = cart[product.id];
+                if (qty > 0) {
+                    totalQty += qty;
+                    totalPrice += qty * product.price;
+                    orderDetails += `${product.emoji} ${qty}x ${product.name}\n`;
+                }
+            });
+
+            if (totalQty === 0) {
+                showModal('Keranjang Kosong', 'Pilih minimal 1 es krim Gabin dulu yuk!', '🍦');
+                return;
+            }
+
+            let promoText = "";
+            let locationInfo = "";
+            let shippingFee = 0;
+
+            if (fulfillmentType === 'cod') {
+                const codVal = codAddressInput ? codAddressInput.value.trim() : "";
+                const finalCod = codVal ? codVal : "Tembalang Area";
+                
+                if (totalQty >= 3) {
+                    promoText = "\n🎁 *Status Promo:* Yeay, dapet Bonus Tas Spunbond & Free COD! 😍";
+                    locationInfo = `• Metode: 🛵 COD Tembalang (FREE ONGKIR)\n• Alamat: *${finalCod}*`;
+                } else {
+                    shippingFee = 3000;
+                    totalPrice += shippingFee;
+                    promoText = "\n📦 *Info Ongkir:* Tambahan Ongkir COD Rp 3.000";
+                    locationInfo = `• Metode: 🛵 COD Tembalang (+Ongkir Rp 3.000)\n• Alamat: *${finalCod}*`;
+                }
+            } else {
+                if (totalQty >= 3) {
+                    promoText = "\n🎁 *Status Promo:* Yeay, dapet Bonus Tas Spunbond! 😍";
+                }
+                locationInfo = `• Metode: 📍 Ambil di Titik Jemput\n• Titik Jemput: *${pickup}*`;
+            }
+                
+            let notesText = notes ? `\n• Catatan: 📝 ${notes}` : "";
+
+            // Format message exactly as requested
+            const waNumber = "6285728142390"; // Nomor WhatsApp terupdate (Nazril)
+            
+            const message = `🧺 *HALO GABIN SUKII!* 🧺
+Yeay, aku mau ikut Pre-Order nih! 🤤✨
+
+👤 *DATA PEMESAN*
+• Nama: *${name}*
+${locationInfo}${notesText}
+
+🛍️ *DETAIL PESANAN*
+${orderDetails}
+💰 *TOTAL: ${formatRupiah(totalPrice)}*${promoText}
+
+Ditunggu info pembayarannya ya Min! Thank youu! 🫶`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const waUrl = `https://wa.me/${waNumber}?text=${encodedMessage}`;
+
+            // Redirect to WhatsApp using a more reliable method for iframes
+            const a = document.createElement('a');
+            a.href = waUrl;
+            a.target = '_blank';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        // Initialize on load
+        window.onload = () => {
+            renderProducts();
+        };
+
+    </script>
+</body>
+</html>
